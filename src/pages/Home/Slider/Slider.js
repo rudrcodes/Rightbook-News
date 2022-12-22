@@ -13,11 +13,11 @@ const Slider = () => {
                     <Link className='text-sm md:text-base inline-block px-6 py-1 rounded-lg bg-violet-500 text-white'>View</Link>
                 </div>
                 <div className='absolute top-1 right-0 2xl:top-[15px] 2xl:right-[15px] flex'>
-                    <span class="bg-red-500 text-white text-xs 2xl:text-sm font-medium px-2.5 py-0.5 rounded flex items-center">
+                    <span className="bg-red-500 text-white text-xs 2xl:text-sm font-medium px-2.5 py-0.5 rounded flex items-center">
                         <span className='w-2 h-2 2xl:w-3 2xl:h-3 duration-300 bg-white inline-block rounded-full mr-2 animate-pulse'></span>
                         Live
                     </span>
-                    <span class="bg-[#00000040] text-white text-xs 2xl:text-sm font-medium mr-2 px-2.5 py-0.5 rounded flex items-center">
+                    <span className="bg-[#00000040] text-white text-xs 2xl:text-sm font-medium mr-2 px-2.5 py-0.5 rounded flex items-center">
                         22 : 30
                     </span>
                 </div>
