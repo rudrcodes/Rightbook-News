@@ -4,7 +4,15 @@
 }
 
 .swiper-pagination-bullet {
-    width: 17px !important;
-    height: 17px !important;
-    border: 4px solid white !important;
+    width: 12px !important;
+    height: 12px !important;
+    border: 2px solid white !important;
+}
+
+@media screen and (min-width: 1536px) {
+    .swiper-pagination-bullet {
+        width: 17px !important;
+        height: 17px !important;
+        border: 4px solid white !important;
+    }
 }

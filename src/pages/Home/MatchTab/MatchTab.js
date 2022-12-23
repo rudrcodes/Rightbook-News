@@ -112,22 +112,22 @@ const MatchTab = () => {
         <div>
             <div className="">
                 <div>
-                    <div>
+                    <div className='text-center lg:text-start'>
                         <button
                             onClick={() => setMatchType('League')}
-                            className={`text-2xl px-5 py-1 mr-6 border-4 ${matchType === 'League' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
+                            className={`text-sm lg:text-base 2xl:text-2xl px-3 md:px-5 py-1 mr-2 md:mr-3 2xl:mr-6 border-2 lg:border-4 ${matchType === 'League' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
                         >League</button>
                         <button
                             onClick={() => setMatchType('International')}
-                            className={`text-2xl px-5 py-1 mr-6 border-4 ${matchType === 'International' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
+                            className={`text-sm lg:text-base 2xl:text-2xl px-3 md:px-5 py-1 mr-2 md:mr-3 2xl:mr-6 border-2 lg:border-4 ${matchType === 'International' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
                         >International</button>
                         <button
                             onClick={() => setMatchType('Women')}
-                            className={`text-2xl px-5 py-1 mr-6 border-4 ${matchType === 'Women' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
+                            className={`text-sm lg:text-base 2xl:text-2xl px-3 md:px-5 py-1 mr-2 md:mr-3 2xl:mr-6 border-2 lg:border-4 ${matchType === 'Women' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
                         >Women</button>
                         <button
                             onClick={() => setMatchType('Domestic')}
-                            className={`text-2xl px-5 py-1 mr-6 border-4 ${matchType === 'Domestic' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
+                            className={`text-sm lg:text-base 2xl:text-2xl px-3 md:px-5 py-1 mr-2 md:mr-3 2xl:mr-6 border-2 lg:border-4 ${matchType === 'Domestic' ? 'border-[#80D8FF] text-[#80D8FF]' : 'border-[#FFFFFF50] text-[#FFFFFF50]'} rounded-full`}
                         >Domestic</button>
                     </div>
                 </div>
