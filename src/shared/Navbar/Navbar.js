@@ -6,6 +6,7 @@ import football from '../../images/football.svg';
 import tennis from '../../images/tennis.svg';
 import cricket from '../../images/cricket.svg';
 import CustomNavLink from '../../components/NavLink/NavLink';
+import logo from '../../images/logo.png';
 
 const Navbar = () => {
 
@@ -14,7 +15,9 @@ const Navbar = () => {
     return (
         <aside className='lg:pt-6 2xl:pt-12 border-b-2 z-50 lg:min-h-screen relative flex flex-col sticky top-0 right-0 border-r-4 border-[#20202D]'>
             <div className='w-full flex justify-between lg:justify-center items-center py-3 px-5 lg:py-0'>
-                <h1 className="text-center md:text-2xl xl:text-3xl 2xl:text-4xl uppercase text-white font-['Lexend_Mega'] font-normal">CRICNEWS</h1>
+                <h1 className="text-center md:text-2xl xl:text-3xl 2xl:text-4xl uppercase text-white font-['Lexend_Mega'] font-normal">
+                    <img className='mx-auto w-52 md:w-60 2xl:w-auto' src={logo} />
+                </h1>
                 <button onClick={() => setIsMenuOpen(!isMenuOpen)} className='text-white bg-transparent outline-0 lg:hidden'>
                     {isMenuOpen ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
