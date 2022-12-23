@@ -1,6 +1,6 @@
 import React from 'react';
 import NavMenu from '../../shared/NavMenu/NavMenu';
-import MatchStatus from './MatchStatus/MatchStatus';
+import MatchTab from './MatchTab/MatchTab';
 import Slider from './Slider/Slider';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
                 <Slider />
             </div>
             <div className='mt-16'>
-                <MatchStatus />
+                <MatchTab />
             </div>
         </div>
     );

@@ -1,25 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MatchItem = () => {
+const MatchItem = ({ match }) => {
+    const { title, team1, team2, winnerTeam, winningType, score, type, time, venue } = match;
     return (
-        <div>
+        <div className='mb-7'>
             <div className='bg-violet-500 text-white pl-5 rounded-tl-md rounded-br-full'>
-                <h2 className="text-3xl font-bold uppercase py-3 font-['Inter']">Malaysia Quadrangular Series 2022 - 23 </h2>
+                <h2 className="text-3xl font-bold py-3 font-['Inter']">{title}</h2>
             </div>
             <div className="mt-7 rounded-lg bg-[#D9D9D912] px-4 py-3 ml-3 font-['Inter'] 2xl:max-w-[720px]">
                 <p>
-                    <span className='text-2xl text-white font-normal'>Bharain</span>
+                    <span className='text-2xl text-white font-normal'>{team1}</span>
                     <span className='mx-2.5 text-[#F5A023] text-2xl'>vs</span>
-                    <span className='text-2xl text-white font-normal'>Singapore</span>
+                    <span className='text-2xl text-white font-normal'>{team2}</span>
                     <span className='mx-2.5 text-[#827E7E] text-base font-normal'>4 Match</span>
                 </p>
-                <p className='text-[#827E7E] my-2 text-base font-normal'>Today . 9AM at Bangi, Malaysia, UKM-YSD Cricket Oval</p>
+                <p className='text-[#827E7E] my-2 text-base font-normal'>{time} at {venue}</p>
                 <div className='rounded-r-lg shadow-md p-3 bg-[#D9D9D929] w-fit text-xl'>
                     <p className='flex text-xl text-[#35A863]'><span className='uppercase w-16'>BHR</span><span>144-8 ( 20 Ovs )</span></p>
                     <p className='flex text-xl text-white'><span className='uppercase w-16'>Sin</span><span>144-7 ( 20 Ovs )</span></p>
                 </div>
-                <p className='mt-4 text-[#4A90E2] font-normal text-xl ml-3'>Match tied ( Bharain won by Super Over ) </p>
+                <p className='mt-4 text-[#4A90E2] font-normal text-xl ml-3'>Match tied ( {winnerTeam} won by {winningType} ) </p>
                 <div className='text-end'>
                     <Link className='text-lg ml-auto text-white flex items-center w-fit'>
                         Get More Info
