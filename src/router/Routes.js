@@ -1,6 +1,10 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layouts/Main/MainLayout';
+import Cricket from '../pages/Cricket/Cricket';
+import CricketMatches from '../pages/Cricket/CricketMatches/CricketMatches';
+import Football from '../pages/Football/Football';
+import FootballSchedules from '../pages/Football/FootballSchedules/FootballSchedules';
 import Home from '../pages/Home/Home';
 
 const Routes = () => {
@@ -12,6 +16,26 @@ const Routes = () => {
                 {
                     path: '/',
                     element: <Home />
+                },
+                {
+                    path: '/cricket',
+                    element: <Cricket />,
+                    children: [
+                        {
+                            path: '/cricket/',
+                            element: <CricketMatches />
+                        }
+                    ]
+                },
+                {
+                    path: '/football',
+                    element: <Football />,
+                    children: [
+                        {
+                            path: '/football/schedules',
+                            element: <FootballSchedules />
+                        }
+                    ]
                 }
             ]
         }

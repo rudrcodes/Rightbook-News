@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import MatchItem from '../../../components/MatchItem/MatchItem';
+import MatchItem from '../MatchItem/MatchItem';
 
-const MatchTab = () => {
+const CricketMatchTab = () => {
 
     const [matchType, setMatchType] = useState('League');
 
@@ -110,7 +110,7 @@ const MatchTab = () => {
 
     return (
         <div>
-            <div className="">
+            <div className="pt-10">
                 <div>
                     <div className='text-center lg:text-start'>
                         <button
@@ -147,4 +147,4 @@ const MatchTab = () => {
     );
 }
 
-export default MatchTab;
+export default CricketMatchTab;
