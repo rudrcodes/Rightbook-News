@@ -7,6 +7,7 @@ import Football from "../pages/Football/Football";
 import FootballMatches from "../pages/Football/FootballMatches/FootballMatches";
 import FootballSchedules from "../pages/Football/FootballSchedules/FootballSchedules";
 import Home from "../pages/Home/Home";
+import { Schedules } from "../pages/Schedules";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const Routes = () => {
             {
               path: "/cricket/",
               element: <CricketMatches />,
+            },
+            {
+              path: "/cricket/schedules",
+              element: <Schedules />,
             },
           ],
         },

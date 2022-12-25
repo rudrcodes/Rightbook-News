@@ -199,8 +199,8 @@ export const Schedules = () => {
     },
   ];
   useEffect(() => {
-    // cricketData();
-    setMatchList(dummyData);
+    cricketData();
+    // setMatchList(dummyData);
     console.log("inside");
   }, []);
 
@@ -230,7 +230,9 @@ export const Schedules = () => {
               time: "9:00 AM",
               timeLocal: "02:00 GMT / 9:00 LOCAL", */}
               {/* ele.InfoOFMatch.map((data)=>{<h2>data.startDate</h2>}) */}
-              {/* ele.InfoOFMatch.map((match)=>{<h2>{match.startDate}</h2>}) */}
+              {ele.InfoOFMatch.map((match) => (
+                <h2>{match.startDate}</h2>
+              ))}
               <h2>{ele.date}</h2>
               <div>
                 <div>
