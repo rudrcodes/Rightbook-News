@@ -5,7 +5,7 @@ import axios from "axios";
 import { options } from "../apis/cricketApi";
 import { matchRoutes } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import { continueStatement } from "@babel/types";
+import { continueStatement, typeParameter } from "@babel/types";
 
 const Cont = styled.div`
   /* background-color: red; */
@@ -49,7 +49,7 @@ const PerMatch = styled.div`
     /* display: inline; */
     padding: 5px 20px;
     /* height: 10px; */
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     /* margin-bottom: 15px; */
     @media (max-width: 768px) {
@@ -58,7 +58,7 @@ const PerMatch = styled.div`
   }
   & > div {
     color: #fff;
-    font-size: 14px;
+    font-size: 15px;
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
@@ -90,7 +90,7 @@ export const Cricketschedules = () => {
       .request(options)
       .then(function (response) {
         const arrTypeMatches = response.data.typeMatches;
-        console.log(arrTypeMatches);
+        // console.log(arrTypeMatches);
         let finalMatchList = arrTypeMatches;
         // let finalMatchList = [];
         // let tempMatchList = [];
@@ -117,7 +117,7 @@ export const Cricketschedules = () => {
         //   tempMatchList.push(data);
         // });
         // finalMatchList = [...tempMatchList];
-        console.log(finalMatchList);
+        // console.log(finalMatchList);
         // finalMatchList.map((el) => {
         //   el.seriesMatches.map((el) => {
         //     // console.log(el.seriesAdWrapper?.seriesName);
@@ -216,9 +216,27 @@ export const Cricketschedules = () => {
   useEffect(() => {
     cricketData();
     // setMatchList(dummyData);
-    console.log("inside");
+    // console.log("inside");
   }, []);
-
+  const dayCalc = (day) => {
+    const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    if (day === 7) {
+      return week[0];
+    }
+    return week[day];
+  };
+  const milToDate = (mili) => {
+    const date = new Date(Number(mili));
+    console.log(date);
+    // console.log(typeof mili);
+    // console.log(date.toString());
+    const dateFinal = `${dayCalc(date.getDay())} ,${date.getMonth() + 1} ${
+      date.getDay() < 10 ? "0" + date.getDay() : date.getDay()
+    } ${date.getFullYear()}`;
+    return `${date.toString().slice(0, 3)}, ${date.toString().slice(4, 15)}`;
+    // return dateFinal.toUpperCase();
+  };
+  milToDate();
   // matchList.map((ind) => {
   //   console.log(ind);
   // });
@@ -235,54 +253,71 @@ export const Cricketschedules = () => {
           />
         </Head>
         {matchList.map((ele) => {
-          return ele.seriesMatches.map((match) => (
-            <PerMatch>
-              <h2>
-                {match.seriesAdWrapper?.matches[0].matchInfo.startDate}
-              </h2>
-              {/* {match.seriesAdWrapper?.matches.map((ele) => (
+          return ele.seriesMatches.map((match) =>
+            !match.seriesAdWrapper ? (
+              ""
+            ) : (
+              <PerMatch>
+                <h2>
+                  {milToDate(
+                    match.seriesAdWrapper?.matches[0].matchInfo.startDate
+                  ).toUpperCase()}
+                </h2>
+                {/* <h2>{match.seriesAdWrapper?.matches[0].matchInfo.startDate}</h2> */}
+                {/* {match.seriesAdWrapper?.matches.map((ele) => (
                 <h2>{ele.startDate}</h2>
               ))} */}
-              <div>
                 <div>
-                  <h4 style={{fontWeight:"bolder"}}>{match.seriesAdWrapper?.seriesName}</h4>
-                  <span>&nbsp;</span>
-                </div>
-                <div>
-                  <h4>
-                    {match.seriesAdWrapper?.matches[0].matchInfo.team1.teamName}{" "}
-                    vs{" "}
-                    {match.seriesAdWrapper?.matches[0].matchInfo.team2.teamName}
-                  </h4>
-                  <span>
-                    {
-                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
-                        .ground
-                    }
-                    ,
-                    {match.seriesAdWrapper?.matches[0].matchInfo.venueInfo.city}
-                  </span>
-                </div>
-                <div>
-                  <h4>
-                    {
-                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
-                        .timezone
-                    }
-                  </h4>
-                  <span>
-                    {
-                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
-                        .timezone
-                    }{" "}
-                    /{" "}
-                    {
-                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
-                        .timezone
-                    }
-                  </span>
-                </div>
-                {/* {match.seriesAdWrapper?.matches.map((ele) => {
+                  <div>
+                    <h4 style={{ fontWeight: "bolder" }}>
+                      {match.seriesAdWrapper?.seriesName}
+                    </h4>
+                    <span>&nbsp;</span>
+                  </div>
+                  <div>
+                    <h4>
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.team1
+                          .teamName
+                      }{" "}
+                      vs{" "}
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.team2
+                          .teamName
+                      }
+                    </h4>
+                    <span>
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                          .ground
+                      }
+                      ,
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                          .city
+                      }
+                    </span>
+                  </div>
+                  <div>
+                    <h4>
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                          .timezone
+                      }
+                    </h4>
+                    <span>
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                          .timezone
+                      }{" "}
+                      /{" "}
+                      {
+                        match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                          .timezone
+                      }
+                    </span>
+                  </div>
+                  {/* {match.seriesAdWrapper?.matches.map((ele) => {
                   return (
                     <>
                       <div>
@@ -305,11 +340,12 @@ export const Cricketschedules = () => {
                     </>
                   );
                 })} */}
-              </div>
-            </PerMatch>
-          ));
+                </div>
+              </PerMatch>
+            )
+          );
         })}
       </Cont>
     </div>
   );
-}
+};
