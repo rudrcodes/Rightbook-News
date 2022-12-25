@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SlideItem = ({ sliderImg, team1, team2, match }) => {
+const CricketSlideItem = ({ sliderImg, team1, team2, match }) => {
     return (
-        <div className='overflow-hidden relative z-10'>
+        <div className='overflow-hidden rounded-[30px] relative z-10'>
             <img
                 src={sliderImg}
                 className="w-full h-auto"
@@ -23,4 +23,4 @@ const SlideItem = ({ sliderImg, team1, team2, match }) => {
     );
 }
 
-export default SlideItem;
+export default CricketSlideItem;
