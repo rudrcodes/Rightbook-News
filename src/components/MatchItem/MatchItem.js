@@ -2,30 +2,75 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MatchItem = ({ match }) => {
-    const { title, team1, team2, message, time, venue } = match;
+
+    const { seriesName, startDate, endDate, stateTitle, matchDesc, team1, team2, venueInfo, status } = match.matchInfo;
+    const matchScore = match?.matchScore;
+
+    console.log(match?.matchInfo);
+
+    const wonTeamCheck = (winingTeam, team) => {
+        const splitString = winingTeam.split(" ");
+        if (splitString[0] === team) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const matchStartEndDate = (startTime, endTime) => {
+        const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        //match start time to date and month
+        const startDate = new Date(parseInt(startTime));
+        const startMonth = monthArr[startDate.getMonth()];
+        const startDateMonth = `${startMonth} ${startDate.getDate()}`;
+
+        //match end time to date and month
+        const endDate = new Date(parseInt(endTime));
+        const endMonth = monthArr[endDate.getMonth()];
+        const endDateMonth = `${endMonth} ${endDate.getDate()}`;
+
+        //current date and month
+        const currentDate = new Date();
+        const currentMonth = monthArr[currentDate.getMonth()];
+        const currentDateMonth = `${currentMonth} ${currentDate.getDate()}`;
+
+        if (startDateMonth === currentDateMonth) {
+            return 'Today';
+        } else {
+            return `${startDateMonth} - ${endDateMonth}`;
+        }
+
+    }
+
     return (
         <div className='mb-7'>
             <div className='bg-violet-500 text-white pl-5 rounded-tl-md rounded-br-full'>
-                <h2 className="text-xl md:text-2xl 2xl:text-3xl font-bold py-3 font-['Inter']">{title}</h2>
+                <h2 className="text-xl md:text-2xl 2xl:text-3xl font-bold py-3 font-['Inter']">{seriesName}</h2>
             </div>
             <div className="mt-7 rounded-lg bg-[#D9D9D912] px-4 py-3 ml-3 font-['Inter'] 2xl:max-w-[720px]">
                 <p>
-                    <span className='text-xl 2xl:text-2xl text-white font-normal'>{team1}</span>
+                    <span className='text-xl 2xl:text-2xl text-white font-normal'>{team1?.teamName}</span>
                     <span className='mx-2.5 text-[#F5A023] text-xl 2xl:text-2xl'>vs</span>
-                    <span className='text-xl 2xl:text-2xl text-white font-normal'>{team2}</span>
-                    <span className='mx-2.5 text-[#827E7E] text-sm 2xl:text-base font-normal'>4 Match</span>
+                    <span className='text-xl 2xl:text-2xl text-white font-normal'>{team2?.teamName}</span>
+                    <span className='mx-2.5 text-[#827E7E] text-sm 2xl:text-base font-normal'>{matchDesc}</span>
                 </p>
-                <p className='text-[#827E7E] my-2 text-sm 2xl:text-base font-normal'>{time} at {venue}</p>
+                <p className='text-[#827E7E] my-2 text-sm 2xl:text-base font-normal'>{matchStartEndDate(startDate, endDate)} at {venueInfo?.city}, {venueInfo?.ground}</p>
                 <div className='rounded-r-lg shadow-md p-3 bg-[#D9D9D929] w-fit text-xl'>
-                    <p className='flex text-base 2xl:text-xl text-[#35A863]'>
-                        <span className='uppercase w-16'>BHR</span>
-                        <span>144-8 ( 20 Ovs )</span></p>
-                    <p className='flex text-base 2xl:text-xl text-white'>
-                        <span className='uppercase w-16'>Sin</span>
-                        <span>144-7 ( 20 Ovs )</span>
+                    <p className={`flex text-base 2xl:text-xl ${wonTeamCheck(stateTitle, team1?.teamSName) ? 'text-[#35A863]' : 'text-white'}`}>
+                        <span className='uppercase w-16'>{team1?.teamSName}</span>
+                        {matchScore?.team1Score?.inngs1?.runs &&
+                            <span>{matchScore?.team1Score?.inngs1?.runs}-{matchScore?.team1Score?.inngs1?.wickets} ( {matchScore?.team1Score?.inngs1?.overs} Ovs )</span>
+                        }
+                    </p>
+                    <p className={`flex text-base 2xl:text-xl ${wonTeamCheck(stateTitle, team2?.teamSName) ? 'text-[#35A863]' : 'text-white'}`}>
+                        <span className='uppercase w-16'>{team2?.teamSName}</span>
+                        {matchScore?.team2Score?.inngs1?.runs &&
+                            <span>{matchScore?.team2Score?.inngs1?.runs}-{matchScore?.team2Score?.inngs1?.wickets} ( {matchScore?.team2Score?.inngs1?.overs} Ovs )</span>
+                        }
                     </p>
                 </div>
-                <p className='mt-4 text-[#4A90E2] font-normal text-base 2xl:text-xl ml-3'>{message}</p>
+                <p className='mt-4 text-[#4A90E2] font-normal text-base 2xl:text-xl ml-3'>{status}</p>
                 <div className='text-end'>
                     <Link className='text-sm 2xl:text-lg ml-auto text-white flex items-center w-fit'>
                         Get More Info
