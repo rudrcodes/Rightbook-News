@@ -25,7 +25,6 @@ const Head = styled.div`
   background: #5e48e7;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px 5px 50px 5px;
-
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -77,7 +76,6 @@ const PerMatch = styled.div`
       & div {
         margin-top: 2px;
         margin-bottom: 2px;
-
         /* background-color: red; */
       }
     }
@@ -314,4 +312,4 @@ export const Cricketschedules = () => {
       </Cont>
     </div>
   );
-};
+}
