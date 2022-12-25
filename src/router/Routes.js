@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "../layouts/Main/MainLayout";
 import Home from "../pages/Home/Home";
-import { Schedules } from "../pages/Schedules";
+import { Cricketschedules } from "../pages/Cricketschedules";
 const Routes = () => {
   const router = createBrowserRouter([
     {
@@ -15,7 +15,7 @@ const Routes = () => {
         },
         {
           path: "/cricket/schedules",
-          element: <Schedules />,
+          element: <Cricketschedules />,
         },
       ],
     },

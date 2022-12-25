@@ -5,6 +5,7 @@ import axios from "axios";
 import { options } from "../apis/cricketApi";
 import { matchRoutes } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { continueStatement } from "@babel/types";
 
 const Cont = styled.div`
   /* background-color: red; */
@@ -83,7 +84,7 @@ const PerMatch = styled.div`
   }
 `;
 
-export const Schedules = () => {
+export const Cricketschedules = () => {
   const [matchList, setMatchList] = useState([]);
 
   const cricketData = async () => {
@@ -92,29 +93,45 @@ export const Schedules = () => {
       .then(function (response) {
         const arrTypeMatches = response.data.typeMatches;
         console.log(arrTypeMatches);
-        let finalMatchList = [];
-        arrTypeMatches.map((ele) => {
-          let data;
-          ele.seriesMatches.map((el) => {
-            data = {
-              //  console.log(el.seriesAdWrapper.seriesName);
-              seriesName: el.seriesAdWrapper?.seriesName,
-              InfoOFMatch: el.seriesAdWrapper?.matches.map((elem) => {
-                return {
-                  startDate: elem.matchInfo.startDate,
-                  endDate: elem.matchInfo.endDate,
-                  team1: elem.matchInfo.team1.teamName,
-                  team2: elem.matchInfo.team2.teamName,
-                  groundName: elem.matchInfo.venueInfo.ground,
-                  cityName: elem.matchInfo.venueInfo.city,
-                  timeZone: elem.matchInfo.venueInfo.timeZone,
-                };
-              }),
-            };
-          });
-          finalMatchList.push(data);
-        });
+        let finalMatchList = arrTypeMatches;
+        // let finalMatchList = [];
+        // let tempMatchList = [];
+        // arrTypeMatches.map((ele) => {
+        //   let data;
+        //   ele.seriesMatches.map((el) => {
+        //     data = {
+        //       //  console.log(el.seriesAdWrapper.seriesName);
+        //       // seriesName: el.match?.seriesName,
+        //       InfoOFMatch: el.seriesAdWrapper?.matches,
+        //       //   InfoOFMatch: el.seriesAdWrapper?.matches.map((elem) => {
+        //       //     return {
+        //       //       startDate: elem.matchInfo.startDate,
+        //       //       endDate: elem.matchInfo.endDate,
+        //       //       team1: elem.matchInfo.team1.teamName,
+        //       //       team2: elem.matchInfo.team2.teamName,
+        //       //       groundName: elem.matchInfo.venueInfo.ground,
+        //       //       cityName: elem.matchInfo.venueInfo.city,
+        //       //       timeZone: elem.matchInfo.venueInfo.timeZone,
+        //       //     };
+        //       //   }),
+        //     };
+        //   });
+        //   tempMatchList.push(data);
+        // });
+        // finalMatchList = [...tempMatchList];
         console.log(finalMatchList);
+        // finalMatchList.map((el) => {
+        //   el.seriesMatches.map((el) => {
+        //     // console.log(el.seriesAdWrapper?.seriesName);
+        //     console.log(el.seriesAdWrapper?.matches);
+        //     el.seriesAdWrapper?.matches.map((ele) => {
+        //       console.log(
+        //         ele.matchInfo.team1.teamName,
+        //         ele.matchInfo.team2.teamName
+        //       );
+        //     });
+        //   });
+        // });
         setMatchList(finalMatchList);
         // return response.data;
       })
@@ -220,34 +237,79 @@ export const Schedules = () => {
           />
         </Head>
         {matchList.map((ele) => {
-          return (
+          return ele.seriesMatches.map((match) => (
             <PerMatch>
-              {/* 
-               date: "SAT, MAY 07 2022",
-               tournament: "Finland tour of Denmark, 2022",
-               teams: "Denmark vs Finland, 1st T20I",
-               place: "Svanholm Park, Brondby",
-              time: "9:00 AM",
-              timeLocal: "02:00 GMT / 9:00 LOCAL", */}
-              {/* ele.InfoOFMatch.map((data)=>{<h2>data.startDate</h2>}) */}
-             { ele.InfoOFMatch.map((match)=>(<h2>{match.startDate}</h2>))}
-              <h2>{ele.date}</h2>
+              <h2>
+                {match.seriesAdWrapper?.matches[0].matchInfo.startDate}
+              </h2>
+              {/* {match.seriesAdWrapper?.matches.map((ele) => (
+                <h2>{ele.startDate}</h2>
+              ))} */}
               <div>
                 <div>
-                  <h4>{ele.tournament}</h4>
+                  <h4 style={{fontWeight:"bolder"}}>{match.seriesAdWrapper?.seriesName}</h4>
                   <span>&nbsp;</span>
                 </div>
                 <div>
-                  <h4>{ele.teams}</h4>
-                  <span>{ele.place}</span>
+                  <h4>
+                    {match.seriesAdWrapper?.matches[0].matchInfo.team1.teamName}{" "}
+                    vs{" "}
+                    {match.seriesAdWrapper?.matches[0].matchInfo.team2.teamName}
+                  </h4>
+                  <span>
+                    {
+                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                        .ground
+                    }
+                    ,
+                    {match.seriesAdWrapper?.matches[0].matchInfo.venueInfo.city}
+                  </span>
                 </div>
                 <div>
-                  <h4>{ele.time}</h4>
-                  <span>{ele.timeLocal}</span>
+                  <h4>
+                    {
+                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                        .timezone
+                    }
+                  </h4>
+                  <span>
+                    {
+                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                        .timezone
+                    }{" "}
+                    /{" "}
+                    {
+                      match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
+                        .timezone
+                    }
+                  </span>
                 </div>
+                {/* {match.seriesAdWrapper?.matches.map((ele) => {
+                  return (
+                    <>
+                      <div>
+                        <h4>
+                          {ele.matchInfo.team1.teamName} vs
+                          {ele.matchInfo.team2.teamName}
+                        </h4>
+                        <span>
+                          {ele.matchInfo.venueInfo.ground},
+                          {ele.matchInfo.venueInfo.city}
+                        </span>
+                      </div>
+                      <div>
+                        <h4>{ele.matchInfo.venueInfo.timezone}</h4>
+                        <span>
+                          {ele.matchInfo.venueInfo.timezone} /{" "}
+                          {ele.matchInfo.venueInfo.timezone}
+                        </span>
+                      </div>
+                    </>
+                  );
+                })} */}
               </div>
             </PerMatch>
-          );
+          ));
         })}
       </Cont>
     </div>
