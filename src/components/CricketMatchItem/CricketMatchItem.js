@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MatchItem = ({ match }) => {
+const CricketMatchItem = ({ match }) => {
 
     const { seriesName, startDate, endDate, stateTitle, matchDesc, team1, team2, venueInfo, status } = match.matchInfo;
     const matchScore = match?.matchScore;
 
-    console.log(match?.matchInfo);
-
+    // won team check
     const wonTeamCheck = (winingTeam, team) => {
         const splitString = winingTeam.split(" ");
         if (splitString[0] === team) {
@@ -17,6 +16,7 @@ const MatchItem = ({ match }) => {
         }
     }
 
+    // match start and end date check 
     const matchStartEndDate = (startTime, endTime) => {
         const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -84,4 +84,4 @@ const MatchItem = ({ match }) => {
     );
 }
 
-export default MatchItem;
+export default CricketMatchItem;

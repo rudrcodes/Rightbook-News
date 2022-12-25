@@ -4,7 +4,7 @@ import slider2 from '../../images/slider/slider2.png';
 import slider3 from '../../images/slider/slider3.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
-import SlideItem from '../SlideItem/SlideItem';
+import CricketSlideItem from '../CricketSlideItem/CricketSlideItem';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './CricketSlider.css';
@@ -22,7 +22,7 @@ const CricketSlider = () => {
                     loop={true}
                 >
                     <SwiperSlide>
-                        <SlideItem
+                        <CricketSlideItem
                             sliderImg={slider1}
                             team1='India'
                             team2='Bangladesh'
@@ -30,7 +30,7 @@ const CricketSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <SlideItem
+                        <CricketSlideItem
                             sliderImg={slider2}
                             team1='India'
                             team2='Bangladesh'
@@ -38,7 +38,7 @@ const CricketSlider = () => {
                         />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <SlideItem
+                        <CricketSlideItem
                             sliderImg={slider3}
                             team1='India'
                             team2='Bangladesh'
