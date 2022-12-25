@@ -14,7 +14,7 @@ const Routes = () => {
           element: <Home />,
         },
         {
-          path: "/schedules",
+          path: "/cricket/schedules",
           element: <Schedules />,
         },
       ],
