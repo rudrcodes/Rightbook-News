@@ -230,9 +230,9 @@ export const Cricketschedules = () => {
     console.log(date);
     // console.log(typeof mili);
     // console.log(date.toString());
-    const dateFinal = `${dayCalc(date.getDay())} ,${date.getMonth() + 1} ${
-      date.getDay() < 10 ? "0" + date.getDay() : date.getDay()
-    } ${date.getFullYear()}`;
+    // const dateFinal = `${dayCalc(date.getDay())} ,${date.getMonth() + 1} ${
+    //   date.getDay() < 10 ? "0" + date.getDay() : date.getDay()
+    // } ${date.getFullYear()}`;
     return `${date.toString().slice(0, 3)}, ${date.toString().slice(4, 15)}`;
     // return dateFinal.toUpperCase();
   };
@@ -243,7 +243,7 @@ export const Cricketschedules = () => {
   // console.log(matchList);
   return (
     <div className="px-3 py-5 2xl:px-14 lg:py-10 2xl:py-16">
-      <NavMenu />
+      <NavMenu rootRoute={'cricket'}/>
       <Cont>
         <Head>
           Upcoming Matches{" "}
