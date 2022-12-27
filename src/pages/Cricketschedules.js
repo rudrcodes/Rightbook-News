@@ -230,9 +230,13 @@ export const Cricketschedules = () => {
     }
     return week[day];
   };
+  const gmtTime = (mili) => {
+    const date = new Date(Number(mili));
+    return `${date.toString().slice(16, 21)}`;
+  };
   const milToDate = (mili) => {
     const date = new Date(Number(mili));
-    // console.log(date);
+    console.log(date);
     // console.log(typeof mili);
     // console.log(date.toString());
     // const dateFinal = `${dayCalc(date.getDay())} ,${date.getMonth() + 1} ${
@@ -280,8 +284,53 @@ export const Cricketschedules = () => {
             style={{ marginLeft: "10px", fontSize: "2rem" }}
             icon="noto:cricket-game"
           />
-        </Head>
+        </Head>{" "}
         {matchList.map((ele) => {
+          return ele.seriesMatches.map((match) =>
+            !match.seriesAdWrapper
+              ? ""
+              : match.seriesAdWrapper.matches.map((indMatch) => {
+                  return (
+                    <PerMatch
+                      key={milToDate(
+                        indMatch.matchInfo.startDate
+                      ).toUpperCase()}
+                    >
+                      <h2>
+                        {milToDate(indMatch.matchInfo.startDate).toUpperCase()}
+                      </h2>
+
+                      <div>
+                        <div>
+                          <h4 style={{ fontWeight: "bolder" }}>
+                            {indMatch.matchInfo.seriesName}
+                          </h4>
+                          <span>&nbsp;</span>
+                        </div>
+                        <div>
+                          <h4>
+                            {indMatch.matchInfo.team1.teamName}&nbsp;vs&nbsp;
+                            {indMatch.matchInfo.team2.teamName}
+                          </h4>
+                          <span>
+                            {indMatch.matchInfo.venueInfo.ground},
+                            {indMatch.matchInfo.venueInfo.city}
+                          </span>
+                        </div>
+                        <div>
+                          <h4> {gmtTime(indMatch.matchInfo.startDate)}</h4>
+                          <span>
+                            {indMatch.matchInfo.venueInfo.timezone} GMT/{" "}
+                            {gmtTime(indMatch.matchInfo.startDate)} Local
+                          </span>
+                        </div>
+                      </div>
+                    </PerMatch>
+                  );
+                })
+          );
+        })}
+        {/* {matchList.map((ele) => {
           return ele.seriesMatches.map((match) =>
             !match.seriesAdWrapper ? (
               ""
@@ -296,10 +345,7 @@ export const Cricketschedules = () => {
                     match.seriesAdWrapper?.matches[0].matchInfo.startDate
                   ).toUpperCase()}
                 </h2>
-                {/* <h2>{match.seriesAdWrapper?.matches[0].matchInfo.startDate}</h2> */}
-                {/* {match.seriesAdWrapper?.matches.map((ele) => (
-                <h2>{ele.startDate}</h2>
-              ))} */}
+             
                 <div>
                   <div>
                     <h4 style={{ fontWeight: "bolder" }}>
@@ -312,8 +358,8 @@ export const Cricketschedules = () => {
                       {
                         match.seriesAdWrapper?.matches[0].matchInfo.team1
                           .teamName
-                      }{" "}
-                      vs{" "}
+                      }
+                      vs
                       {
                         match.seriesAdWrapper?.matches[0].matchInfo.team2
                           .teamName
@@ -342,42 +388,19 @@ export const Cricketschedules = () => {
                       {
                         match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
                           .timezone
-                      }{" "}
-                      /{" "}
+                      } GMT{" "}
+                      /
                       {
                         match.seriesAdWrapper?.matches[0].matchInfo.venueInfo
                           .timezone
-                      }
+                      } Local
                     </span>
                   </div>
-                  {/* {match.seriesAdWrapper?.matches.map((ele) => {
-                  return (
-                    <>
-                      <div>
-                        <h4>
-                          {ele.matchInfo.team1.teamName} vs
-                          {ele.matchInfo.team2.teamName}
-                        </h4>
-                        <span>
-                          {ele.matchInfo.venueInfo.ground},
-                          {ele.matchInfo.venueInfo.city}
-                        </span>
-                      </div>
-                      <div>
-                        <h4>{ele.matchInfo.venueInfo.timezone}</h4>
-                        <span>
-                          {ele.matchInfo.venueInfo.timezone} /{" "}
-                          {ele.matchInfo.venueInfo.timezone}
-                        </span>
-                      </div>
-                    </>
-                  );
-                })} */}
                 </div>
               </PerMatch>
             )
           );
-        })}
+        })} */}
       </Cont>
     </div>
   );
