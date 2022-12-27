@@ -21,7 +21,7 @@ const NavMenu = ({ rootRoute }) => {
         </li>
         <li>
           <NavLink
-            to={`${rootRoute}/schedules/`}
+            to={`${rootRoute}/schedules`}
             className={({ isActive }) =>
               isActive ? activeClassName : className
             }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import arrow from '../../images/arrow.svg';
 import home from '../../images/home.svg';
-import blogs from '../../images/blogs.svg';
 import football from '../../images/football.svg';
 import tennis from '../../images/tennis.svg';
 import cricket from '../../images/cricket.svg';
@@ -46,7 +45,7 @@ const Navbar = () => {
                     </h3>
                     <ul className='pb-10' onClick={() => setIsMenuOpen(false)}>
                         <li>
-                            <CustomNavLink to='/cricket' img={cricket} >Cricket</CustomNavLink>
+                            <CustomNavLink to='/cricket/' img={cricket} >Cricket</CustomNavLink>
                         </li>
                         <li>
                             <CustomNavLink to='/tennis' img={tennis} >Tennis</CustomNavLink>
