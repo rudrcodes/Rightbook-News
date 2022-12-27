@@ -12,7 +12,7 @@ import './CricketSlider.css';
 const CricketSlider = () => {
 
     return (
-        <div>
+        <div >
             <div className='pb-4 border-b-2 border-[#FFFFFF80]'>
                 <Swiper
                     pagination={{

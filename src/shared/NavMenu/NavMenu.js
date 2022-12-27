@@ -7,7 +7,7 @@ const NavMenu = ({ rootRoute }) => {
   const activeClassName =
     "font-semibold block 2xl:font-bold text-base 2xl:text-xl bg-violet-500 rounded-lg text-slate-50 px-3 2xl:px-5 py-2";
   return (
-    <div className="mb-8 border-b-2 pb-8 border-[#92929580]">
+    <div  className="mt-8 mb-8 border-b-2 pb-8 border-[#92929580] px-3 2xl:px-14 lg:py-10 ">
       <ul className="flex flex-wrap gap-2 justify-center xl:justify-start">
         <li>
           <NavLink

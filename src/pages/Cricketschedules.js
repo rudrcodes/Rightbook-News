@@ -251,7 +251,7 @@ export const Cricketschedules = () => {
   // });
   // console.log(matchList);
   return (
-    <div className="px-3 py-5 2xl:px-14 lg:py-10 2xl:py-16">
+    <div  className="px-3 py-5 2xl:px-14 lg:py-10 2xl:py-16">
       {/* <NavMenu rootRoute={'cricket'}/> */}
       <div className="mb-8 border-b-2 pb-8 border-[#92929580]">
         <ul className="flex flex-wrap gap-2 justify-center xl:justify-start">
