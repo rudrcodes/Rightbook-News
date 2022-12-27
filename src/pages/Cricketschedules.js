@@ -131,6 +131,7 @@ export const Cricketschedules = () => {
         //   });
         // });
         setMatchList(finalMatchList);
+        console.log(finalMatchList);
         // return response.data;
       })
       .catch(function (error) {
@@ -227,7 +228,7 @@ export const Cricketschedules = () => {
   };
   const milToDate = (mili) => {
     const date = new Date(Number(mili));
-    console.log(date);
+    // console.log(date);
     // console.log(typeof mili);
     // console.log(date.toString());
     // const dateFinal = `${dayCalc(date.getDay())} ,${date.getMonth() + 1} ${
@@ -257,7 +258,9 @@ export const Cricketschedules = () => {
             !match.seriesAdWrapper ? (
               ""
             ) : (
-              <PerMatch>
+              <PerMatch key={milToDate(
+                match.seriesAdWrapper?.matches[0].matchInfo.startDate
+              ).toUpperCase()}>
                 <h2>
                   {milToDate(
                     match.seriesAdWrapper?.matches[0].matchInfo.startDate

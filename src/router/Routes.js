@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "../layouts/Main/MainLayout";
 import Home from "../pages/Home/Home";
 import { Cricketschedules } from "../pages/Cricketschedules";
+import CricketMatches from "../pages/Cricket/CricketMatches/CricketMatches";
 const Routes = () => {
   const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const Routes = () => {
         {
           path: "/cricket/schedules",
           element: <Cricketschedules />,
+        },
+        {
+          path: "/cricket/",
+          element: <CricketMatches />,
         },
       ],
     },

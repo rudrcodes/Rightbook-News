@@ -37,9 +37,7 @@ const Navbar = () => {
                         <li>
                             <CustomNavLink img={home} to='/'>Home</CustomNavLink>
                         </li>
-                        <li>
-                            <CustomNavLink img={blogs} to='/blogs'>Articles</CustomNavLink>
-                        </li>
+                       
                     </ul>
                 </div>
                 <div className='' >
